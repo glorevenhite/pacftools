@@ -357,6 +357,18 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+|--------------------------------------------------------------------------
+| Modules Locations
+|--------------------------------------------------------------------------
+|
+| Add the locations of modules containing your own modules. You can also
+| change the directory name to whatever you wish such as widgets and so on.
+| Rememebr to change the word 'modules' in both key and value pair. Also,
+| you can add multiple locations as you wish.
+|
+*/
+$config['modules_locations'] = array(APPPATH.'modules/' => '../modules/');
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
