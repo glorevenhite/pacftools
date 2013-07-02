@@ -1,10 +1,8 @@
-<?php $this->load->view('includes/header'); ?>
-
 <h1>Create an Account!</h1>
 <fieldset>
 <legend>Personal Information</legend>
 <?php
-   
+
 echo form_open('login/create_member');
 
 echo form_input('first_name', set_value('first_name', 'First Name'));
@@ -25,7 +23,3 @@ echo form_submit('submit', 'Create Acccount');
 
 <?php echo validation_errors('<p class="error">'); ?>
 </fieldset>
-
-<?php $this->load->view('includes/tut_info'); ?>
-
-<?php $this->load->view('includes/footer'); ?>
