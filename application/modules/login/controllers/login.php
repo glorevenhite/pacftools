@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Login extends MX_Controller {
 
@@ -20,7 +20,7 @@ class Login extends MX_Controller {
 				'is_logged_in' => true
 			);
 			$this->session->set_userdata($data);
-			redirect('site/members_area');
+			redirect(base_url() . 'site/members_area');
 		}
 		else // incorrect username or password
 		{
@@ -84,5 +84,27 @@ class Login extends MX_Controller {
 			//die();
 			$this->load->view('login_form');
 		}
+	}
+
+	function cp() {
+	  // Check whether user has logged in by reading the data stored in session variables.
+	  if($this->session->userdata('username')) {
+	    // load the model for this controller
+	    $this->load->model('user_model');
+	    // Get user details from databasae
+	    $user = $this->user_model->get_member_details();
+
+	    if(!$user) {
+	      // No user found
+	      return false;
+	    }
+	    else {
+	      // display our widget
+	      $this->load->view('user_widget', $user);
+	    }
+	  }
+	  else {
+	    return false;
+	  }
 	}
 }
