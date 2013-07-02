@@ -1,5 +1,4 @@
 <?php echo $this->load->view('includes/header');?>
-<body>
   <div id="wrapper">
     <?php echo modules::run('login/cp');?>
 	<h2>Welcome Back, <?php echo $this->session->userdata('username'); ?>!</h2>
