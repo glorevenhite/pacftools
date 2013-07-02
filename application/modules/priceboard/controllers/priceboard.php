@@ -10,7 +10,7 @@ class Priceboard extends MX_Controller {
 	    $data['main_content'] = $this->table->generate($records);
 
 	    //$data['main_content'] = 'price_table';
-		$this->load->view('price_table', $data);
+		$this->load->view('show_priceboard_view', $data);
 
 
 	}
