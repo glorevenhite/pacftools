@@ -1,42 +1,33 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 class Priceboard extends MX_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 	    $this->load->model('Priceboard_model');
-
-	    $this->load->library('form_validation');
 	    $this->load->library('table');
+	    $records = $this->Priceboard_model->getAll();
+	    $this->table->set_heading(array('id', 'date', 'price'));
+	    $data['main_content'] = $this->table->generate($records);
 
-	    $data['records'] = $this->Priceboard_model->getAll();
-	    $data['heading'] = "NhanXo";
+	    //$data['main_content'] = 'price_table';
+		$this->load->view('price_table', $data);
 
-	    $this->form_validation->set_rules('price', 'Price', 'required');
+
+	}
+
+	function insert() {
+	  $this->load->library('form_validation');
+	  $this->form_validation->set_rules('price', 'Price', 'required');
 
 	    if($this->form_validation->run() == FALSE) {
+	      $data['main_content'] = "Insert new record successfully!";
 	      $this->load->view('priceboard_view', $data);
 	    }
 	    else {
+	      $this->load->model('Priceboard_model');
 	      $this->Priceboard_model->insert();
 		  $this->load->view('priceboard_view', $data);
 	    }
-
 	}
 }
 
