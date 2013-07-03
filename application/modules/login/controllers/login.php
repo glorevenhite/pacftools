@@ -2,31 +2,36 @@
 
 class Login extends MX_Controller {
 
-	function index()
-	{
-		$data['main_content'] = 'login_form';
-		$this->load->view('includes/template', $data);
-	}
+  function index() {
+    // Display the login form
+    $data['main_content'] = 'login_form';
+    $this->load->view('includes/template', $data);
+  }
 
-	function validate_credentials()
-	{
-		$this->load->model('user_model');
-		$query = $this->user_model->validate();
+  /*
+   * Validate membership
+   */
+  function validate_credentials() {
+    // Load model of user
+  	$this->load->model('user_model');
+    // Validate user's credentials by using user_model itself
+  	$query = $this->user_model->validate();
 
-		if($query) // if the user's credentials validated...
-		{
-			$data = array(
-				'username' => $this->input->post('username'),
-				'is_logged_in' => true
-			);
-			$this->session->set_userdata($data);
-			redirect(base_url() . 'site/members_area');
-		}
-		else // incorrect username or password
-		{
-			$this->index();
-		}
-	}
+  	if($query) // if the user's credentials validated...
+  	{
+  		$data = array(
+  			'username' => $this->input->post('username'),
+  			'is_logged_in' => true
+  		);
+  		// Store user's data in session variables
+    	$this->session->set_userdata($data);
+    	redirect(base_url() . 'site/members_area');
+  	}
+  	else // incorrect username or password
+  	{
+  		$this->index();
+  	}
+  }
 
 	function signup()
 	{
@@ -99,7 +104,7 @@ class Login extends MX_Controller {
 	    }
 	    else {
 	      // display our widget
-	      $this->load->view('user_widget', $user);
+	      $this->load->view('site/user_widget', $user);
 	    }
 	  }
 	  else {

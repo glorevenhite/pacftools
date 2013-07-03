@@ -1,12 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Priceboard extends MX_Controller {
 
-	public function index()
-	{
-
+	public function index() {
         modules::run('login/is_logged_in');
         $this->load->view('insert_form');
-
 	}
 
 	function insert() {
