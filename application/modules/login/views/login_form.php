@@ -5,7 +5,7 @@
 	echo form_input('username', 'Username');
 	echo form_password('password', 'Password');
 	echo form_submit('submit', 'Login');
-	echo anchor('login/signup', 'Create Account');
+	echo anchor('login/signup', 'Create Account', 'class="button"');
 	echo form_close();
 	?>
 </div><!-- end login_form-->
