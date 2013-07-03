@@ -29,8 +29,7 @@ h1,h2,h3,h4,h5 {
 
 input[type=text], input[type=password] {
 	display: block;
-	margin: 0 0 1em 0;
-	width: 280px;
+	margin: 0 0 1em 0;	
 	border: 5px;
 	-moz-border-radius: 1px;
 	-webkit-border-radius: 1px;
@@ -38,9 +37,8 @@ input[type=text], input[type=password] {
 	border:1px solid #D0D0D0;  
 }
 
-input[type=submit], form a {
-	border: none;
-	width:90px;
+input[type=submit], form a.button {
+	border: none;	
 	margin-right: 1em;
 	padding: 6px;
 	text-decoration: none;
