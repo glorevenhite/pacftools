@@ -30,5 +30,5 @@
 <script type='text/javascript'>
   $(".datepicker").datepicker();
   $(".datepicker").datepicker("option","dateFormat","yy-mm-dd");
-
+  $("input[type=submit],button").button().click(function(event) {event.preventDefault();});
 </script>
