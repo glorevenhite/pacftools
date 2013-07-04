@@ -15,8 +15,7 @@ class User_model extends CI_Model {
 
 	function create_member() {
 		$new_member_insert_data = array(
-			'first_name' => $this->input->post('first_name'),
-			'last_name' => $this->input->post('last_name'),
+			'full_name' => $this->input->post('full_name'),
 			'email_address' => $this->input->post('email_address'),
 			'username' => $this->input->post('username'),
 			'password' => md5($this->input->post('password'))
@@ -55,8 +54,7 @@ class User_model extends CI_Model {
         $row = $query->last_row();
         // Assign the row to our return array
         $data['id'] = $row->id;
-        $data['first_name'] = $row->first_name;
-        $data['last_name'] = $row->last_name;
+        $data['full_name'] = $row->full_name;
         // Return the user found
         return $data;
 	  }
