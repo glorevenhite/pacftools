@@ -16,7 +16,7 @@ class Project extends MX_Controller {
     $this->load->model('project_model');
     if($query = $this->project_model->create_project())
 			{
-				$data['main_content'] = 'created_project_successfull';
+				$data['main_content'] = 'created_project_successfully';
 				$this->load->view('includes/template', $data);
 			}
   }

@@ -1,34 +1,47 @@
-<script>$(function() {
-  $("#radio").buttonset();
-
-}
-</script>
 <div id="wrapper">
-  <h2>Tạo dư án mới</h2>
-  <?php echo form_open("project/add");?>
-  <?php echo form_label("Project Name:", "project_name");?>
-  <?php echo form_input("project_name");?>
-  <?php echo form_label("Start Date","start_date");?>
-  <?php echo form_input("start","","class='datepicker'")?>
-  <?php echo form_label("End Date","end_date");?>
-  <?php echo form_input("end","","class='datepicker'")?>
+  <h2>Tạo dự án mới</h2>
 
-  <?php echo form_label("Status","status");?>
-  <div id="radio">
-  <?php echo form_radio('status', 'yet_started', TRUE);?>
-  <?php echo form_label("Yet Started", 'yet_started')?>
-  <?php echo form_radio('status', 'processing', FALSE);?>
-  <?php echo form_label("Starting", 'processing')?>
-  <?php echo form_radio('status', 'finished', FALSE);?>
-  <?php echo form_label("Finished", 'finished')?>
+  <?php echo form_open("project/add", "class='pure-form pure-form-aligned'");?>
+  <div class="pure-control-group">
+    <label for='project_name'>Tên dự án:</label>
+    <input type='text' id='project_name' name="project_name">
   </div>
-  <?php echo form_input("user_id")?>
-  <?php echo form_submit("submit", "Thêm Dự án")?>
-  <?php echo form_close();?>
+
+  <div class="pure-control-group">
+    <label for='start_date'>Ngày bắt đầu:</label>
+    <input type='text' id='start_date' name="start_date" class='datepicker'/>
+  </div>
+
+  <div class="pure-control-group">
+    <label for='end_date'>Ngày kết thúc:</label>
+    <input type='text' id='end_date' name="end_date" class='datepicker'/>
+  </div>
+
+  <div class="pure-control-group">
+    <label>Trạng thái</label>
+  <span id="status">
+    <label for='yet_started' class='pure-radio'>Chưa bắt đầu</label>
+    <input type='radio' id='yet_started' name='status' value='Chưa bắt đầu' />
+    <label for='processing' class='pure-radio'>Đang tiến hành</label>
+    <input type='radio' id='processing' name='status' value='Đang tiến hành' />
+    <label for='finished' class='pure-radio'>Đã hoàn thành</label>
+    <input type='radio' id='finished' name='status' value="Đã hoàn thành" />
+  </span>
+  </div>
+
+  <div class="pure-control-group">
+    <label for="assignee">Người thực hiện:</label>
+    <input type='text' id='assignee' name='assignee'/>
+
+  </div>
+  <div class="pure-controls">
+  <button type='submit' class='pure-button'>Tạo dự án mới</button>
+  </div>
+  <?php form_close();?>
 </div>
 
 <script type='text/javascript'>
   $(".datepicker").datepicker();
   $(".datepicker").datepicker("option","dateFormat","yy-mm-dd");
-  $("input[type=submit],button").button().click(function(event) {event.preventDefault();});
+  $("#status").buttonset();
 </script>

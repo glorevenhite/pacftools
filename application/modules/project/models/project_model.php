@@ -6,9 +6,9 @@ class Project_model extends CI_Model {
     $new_project_data = array(
       'project_name' => $this->input->post('project_name'),
       'status' => $this->input->post('status'),
-      'start'=> $this->input->post('start'),
-        'end' => $this->input->post('end'),
-        'user_id' => $this->input->post('user_id')
+      'start'=> $this->input->post('start_date'),
+        'end' => $this->input->post('end_date'),
+        'user_id' => $this->input->post('assignee')
     );
 
     $insert = $this->db->insert('projects',$new_project_data);
