@@ -32,7 +32,6 @@
   <div class="pure-control-group">
     <label for="assignee">Người thực hiện:</label>
     <input type='text' id='assignee' name='assignee'/>
-
   </div>
   <div class="pure-controls">
   <button type='submit' class='pure-button'>Tạo dự án mới</button>
