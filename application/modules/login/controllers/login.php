@@ -21,7 +21,8 @@ class Login extends MX_Controller {
   	{
   		$data = array(
   			'username' => $this->input->post('username'),
-  			'is_logged_in' => true
+  			'is_logged_in' => true,
+  		    'role' => $query->role
   		);
   		// Store user's data in session variables
     	$this->session->set_userdata($data);
@@ -109,5 +110,14 @@ class Login extends MX_Controller {
 	  else {
 	    return false;
 	  }
+	}
+
+	function is_logged_in_as_admin()
+	{
+	   if($this->session->userdata('role') != 1)
+	   {
+          $this->load->view('access_denied_page');
+          die();
+	   }
 	}
 }

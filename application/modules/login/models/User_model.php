@@ -8,7 +8,7 @@ class User_model extends CI_Model {
 		$query = $this->db->get('users');
 
 		if($query->num_rows == 1) {
-			return true;
+			return $query->last_row();
 		}
 
 	}
@@ -55,6 +55,7 @@ class User_model extends CI_Model {
         // Assign the row to our return array
         $data['id'] = $row->id;
         $data['full_name'] = $row->full_name;
+        $data['role'] = $row->role;
         // Return the user found
         return $data;
 	  }
@@ -63,4 +64,10 @@ class User_model extends CI_Model {
 	    return false;
 	  }
 	}
+
+	function get_role($id)
+	{
+      $this->load->model('role_model');
+	}
+
 }

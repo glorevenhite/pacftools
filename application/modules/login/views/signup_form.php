@@ -1,3 +1,4 @@
+<?php modules::run('login/is_logged_in_as_admin')?>
 <h2>Create an Account!</h2>
 <?php echo form_open('login/create_member', "id='signup_form', class='pure-form pure-form-aligned'"); ?>
 <fieldset>
