@@ -24,7 +24,7 @@
           <?php if(modules::run('login/is_logged_in_as_admin')):?>
           <a href="edit/<?php echo $value['doc_id'];?>" class="pure-button">Chỉnh sửa</a>
           <a href="deliver/<?php echo $value['doc_id'];?>" class="pure-button">Chuyển</a>
-          <a href="assignment_info/<?php echo $value['doc_id'];?>" class="pure-button">Chi tiết nhận</a>
+          <a href="assignees/<?php echo $value['doc_id'];?>" class="pure-button">Chi tiết nhận</a>
           <?php endif;?>
         </td>
 

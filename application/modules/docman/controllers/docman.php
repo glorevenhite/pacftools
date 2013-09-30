@@ -192,6 +192,36 @@ class DocMan extends MX_Controller
      $this->template->build('docman', $data);
   }
 
+  /*
+   * Display assignees
+   */
+  function assignees($doc_id)
+  {
+    #$doc_id = $this->input->post('doc_id');
+    $this->load->model('Assignment_model', 'assignment_model');
+
+    $result = $this->assignment_model->get_assignees_by_document_id($doc_id);
+
+
+    $data['records'] = $result;
+
+    $data['main_content'] = 'assignees';
+    $this->template->build('assignees', $data);
+  }
+
+  function update_assignees()
+  {
+    $assignments = $this->input->post('assignee');
+
+    $this->load->model('Assignment_model', 'assignment_model');
+
+    $this->assignment_model->update_assignees($assignments);
+
+    $data['main_content'] = 'docman';
+    $this->template->build('docman', $data);
+
+  }
+
   function create_in_doc()
   {
     #Validation
