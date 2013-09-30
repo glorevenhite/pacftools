@@ -1,7 +1,8 @@
 <div id="horizontal-menu" class="pure-menu pure-menu-horizontal pure-menu-notouch pure-menu-open">
-  <?php echo 'HELLO ' . $username . ' !';?>
+  <?php echo 'Hello ' . $username . ' !';?>
   <ul id="std-menu-items">
       <li><a href="<?php echo base_url() .'site/members_area'?>"><i class="icon-fixed-width icon-home"></i>Trang chủ</a></li>
+      <li><a href="<?php echo base_url() .'login/manage_users'?>">Site Admin</a></li>
       <li><?php echo anchor(base_url().'#','Profile');?></li>
       <li><?php echo anchor(base_url().'#','Tin nhắn');?></li>
       <li><?php echo anchor(base_url().'#', 'Công việc');?></li>

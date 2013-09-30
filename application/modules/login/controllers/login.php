@@ -41,10 +41,10 @@ class Login extends MX_Controller {
   	}
   }
 
-	function signup()
+	function create_user()
 	{
-		$data['main_content'] = 'signup_form';
-		$this->load->view('includes/template', $data);
+		$data['main_content'] = 'create_user';
+		$this->template->build('create_user', $data);
 	}
 
 	function create_member()
@@ -145,5 +145,11 @@ class Login extends MX_Controller {
       #$this->template->build('users_droplist_widget', $data);
 
       $this->load->view('login/users_droplist_widget', $data);
+	}
+
+	function manage_users()
+	{
+      $data['main_content'] = "administer";
+      $this->template->build('administer', $data);
 	}
 }
