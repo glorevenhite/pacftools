@@ -1,4 +1,4 @@
-<?php echo $document['doc_title'];?>
+<p><?php echo $document['doc_title'];?></p>
 
 <form action="../assign" method="post" id="assign_form" name="assign_form" class="pure-form pure-form-aligned">
   <div class="pure-controls">
