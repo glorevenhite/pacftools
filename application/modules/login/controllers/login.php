@@ -19,8 +19,6 @@ class Login extends MX_Controller {
    * Validate membership
    */
   function validate_credentials() {
-    // Load model of user
-  	$this->load->model('user_model');
     // Validate user's credentials by using user_model itself
   	$query = $this->user_model->validate();
 
@@ -102,8 +100,7 @@ class Login extends MX_Controller {
 	function cp() {
 	  // Check whether user has logged in by reading the data stored in session variables.
 	  if($this->session->userdata('username')) {
-	    // load the model for this controller
-	    $this->load->model('user_model');
+
 	    // Get user details from databasae
 	    $user = $this->user_model->get_member_details();
 
