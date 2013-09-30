@@ -2,10 +2,17 @@
 
 class Login extends MX_Controller {
 
+  function __construct()
+  {
+    parent::__construct();
+    $this->load->model('user_model');
+  }
+
   function index() {
-    // Display the login form
     $data['main_content'] = 'login_form';
-    $this->load->view('includes/template', $data);
+    $this->template->title('Login Page');
+    $this->template->set_layout('default');
+    $this->template->build('login_form', $data);
   }
 
   /*
@@ -17,9 +24,11 @@ class Login extends MX_Controller {
     // Validate user's credentials by using user_model itself
   	$query = $this->user_model->validate();
 
+
   	if($query) // if the user's credentials validated...
   	{
   		$data = array(
+            'user_id' => $query->id,
   			'username' => $this->input->post('username'),
   			'is_logged_in' => true,
   		    'role' => $query->role
@@ -118,6 +127,26 @@ class Login extends MX_Controller {
 	   {
           $this->load->view('access_denied_page');
           die();
+          return false;
 	   }
+	   return true;
+	}
+
+	function is_admin()
+	{
+	  if($this->session->userdata('role') != 1)
+	   {
+          return true;
+	   }
+	   return false;
+	}
+
+	function display_users_in_droplist()
+	{
+      $data['users'] = $this->user_model->get_all_users();
+      #$data['main_content'] = 'users_droplist_widget';
+      #$this->template->build('users_droplist_widget', $data);
+
+      $this->load->view('login/users_droplist_widget', $data);
 	}
 }

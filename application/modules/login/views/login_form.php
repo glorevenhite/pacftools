@@ -1,5 +1,4 @@
 <div id="wrapper">
-
   <?php echo form_open('login/validate_credentials',"id='login_form', class='pure-form pure-form-aligned'");?>
   <div class="pure-control-group">
     <?php echo form_label('Tài khoản:','username');?>

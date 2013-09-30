@@ -111,6 +111,17 @@ $autoload['language'] = array();
 
 $autoload['model'] = array();
 
+/*
+| -------------------------------------------------------------------
+|  Auto-load Plugins
+| -------------------------------------------------------------------
+| Prototype:
+|
+|	$autoload['plugin'] = array('model1', 'model2');
+|
+*/
+include(APPPATH."plugins/widget_pi.php");
+$autoload['plugins'] = array('widget_pi');
 
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */

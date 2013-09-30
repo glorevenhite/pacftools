@@ -44,7 +44,8 @@ class Priceboard extends MX_Controller {
     // Format output as table for display to browser
     $data['main_content'] = $this->table->generate($records);
     // Call the view corresponded
-    $this->load->view('priceboard_widget', $data);
+    $this->template->layout('default');
+    $this->template->built('priceboard_widget', $data);
   }
 }
 

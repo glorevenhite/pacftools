@@ -12,7 +12,9 @@ class Site extends MX_Controller
 	 */
 	function members_area() {
 	    modules::run('login/is_logged_in');
-		$this->load->view('logged_in_area');
+	    $data['main_content'] = 'logged_in_area';
+	    $this->template->build('logged_in_area', $data);
+		#$this->load->view('logged_in_area');
 
 	}
 	/*

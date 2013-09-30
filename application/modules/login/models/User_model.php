@@ -70,4 +70,25 @@ class User_model extends CI_Model {
       $this->load->model('role_model');
 	}
 
+	/**
+	 * @access public
+	 * @return array of users
+	 */
+	function get_all_users()
+	{
+	  $data;
+      $this->db->select('*');
+      $this->db->from('users');
+      $result = $this->db->get();
+
+      if($result->num_rows() > 0)
+      {
+        foreach($result->result_array() as $user)
+        {
+          $data[] = $user;
+        }
+      }
+
+      return $data;
+	}
 }
