@@ -59,15 +59,31 @@ class Document_model extends CI_Model {
     return $data;
   }
 
-function get_document_by_title_or_code($title, $code) {
-    global $data;
+  function get_document_between_date($from, $to)
+  {
+    $this->db->select('*');
+    $this->db->from('docman');
+
+    $this->db->where('arrived_date >=', $from);
+    $this->db->where('arrived_date <=', $to);
+    $result = $this->db->get();
+
+    $data;
+    if($result->num_rows() > 0) {
+      foreach($result->result_array() as $row) {
+        $data[] = $row;
+      }
+    }
+    return $data;
+  }
+
+  function get_document_by_doc_code($code)
+  {
+    $data;
 
     $this->db->select('*');
     $this->db->from('docman');
-    $this->db->like('doc_title', $title);
     $this->db->like('doc_code', $code);
-    #$this->db->where('arrived_date >=', $start_arrival);
-    #$this->db->where('arrived_date <=', $end_arrival);
     $result = $this->db->get();
 
     if($result->num_rows() > 0) {
@@ -102,7 +118,7 @@ function get_document_by_title_or_code($title, $code) {
         $data[] = $row;
       }
     }
-    else 
+    else
     {
     	return null;
     }

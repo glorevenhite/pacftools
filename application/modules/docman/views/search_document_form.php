@@ -29,7 +29,6 @@ jQuery(function () {
       <div class="pure-controls">
         <?php echo form_submit('submit', 'Tìm kiếm', "class='pure-button'"); ?>
       </div>
-
       <?php echo validation_errors('<p class="error">'); ?>
   </fieldset>
 </form>

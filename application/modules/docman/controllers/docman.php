@@ -97,29 +97,60 @@ class DocMan extends MX_Controller
     */
   function search()
   {
-    #Get information from form
-    $from = date('Y-m-d', strtotime($this->input->post('from_date')));
-    $to = date('Y-m-d', strtotime($this->input->post('to_date')));
-    $code = $this->input->post('doc_code');
-    $title = $this->input->post('doc_title');
+    // Declare variable $result
+    $result = null;
 
-    $result = $this->document_model->get_document_by($from, $to, $title, $code);
-    if($result)
+    // Check whether the form has been submitted
+    if($_POST)
     {
-      $data['content'] = $result;
-      $data['main_content'] = 'result';
+      // Either 'from date' or 'to date' or both have BEEN set. The other one is required.
+      if ($this->input->post('from_date') || $this->input->post('to_date') )
+      {
+        $this->form_validation->set_rules('from_date', '"Từ ngày"', 'required' );
+        $this->form_validation->set_rules('to_date', '"Đến ngày"', 'required' );
 
-      #Setting output
-      $this->template->title('Quản lý Công văn', 'Kết quả tìm kiếm');
-      $this->template->set_layout('default');
-      $this->template->build('result', $data);
+        if ($this->form_validation->run())
+        {
+          $from = $this->input->post('from_date') == " " ? date('Y-m-d', strtotime($this->input->post('from_date'))) : "";
+          $to = $this->input->post('to_date') ? date('Y-m-d', strtotime($this->input->post('to_date'))) : "";
+
+          $result = $this->document_model->get_document_between_date($from, $to);
+        }
+      }
+      else // Both 'from date' and 'to date' have NOT been set.
+      {
+        $this->form_validation->set_rules('doc_code', '"Số và Ký hiệu văn bản"', 'required' );
+
+        if ($this->form_validation->run())
+        {
+          $code = $this->input->post('doc_code');
+          $result = $this->document_model->get_document_by_doc_code($code);
+        }
+      }
+
+      if($result)
+      {
+        $data['content'] = $result;
+        $data['main_content'] = 'result';
+
+        #Setting output
+        $this->template->title('Quản lý Công văn', 'Kết quả tìm kiếm');
+        $this->template->set_layout('default');
+        $this->template->build('result', $data);
+      }
+      else // Duplication code
+      {
+        $data['main_content'] = 'search_document_form';
+        $this->template->set_layout('default');
+        $this->template->build('search_document_form', $data);
+      }
+
     }
-    else
+    else // Duplication code
     {
       $data['main_content'] = 'search_document_form';
       $this->template->set_layout('default');
       $this->template->build('search_document_form', $data);
-
     }
   }
 
@@ -156,7 +187,7 @@ class DocMan extends MX_Controller
      {
         $this->assignment_model->insert($user_id, $doc_id);
      }
-	
+
      $data['main_content'] = 'docman';
      $this->template->build('docman', $data);
   }
