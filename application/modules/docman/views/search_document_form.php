@@ -32,3 +32,5 @@ jQuery(function () {
       <?php echo validation_errors('<p class="error">'); ?>
   </fieldset>
 </form>
+
+<p> Tìm kiếm văn bản theo: <strong>Khoảng thời gian </strong> hoặc <strong>Số/Ký hiệu văn bản </strong> hoặc <strong>cụm từ trong có trong tiêu đề văn bản </strong> </p>

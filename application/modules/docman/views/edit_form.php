@@ -13,7 +13,7 @@ jQuery(function () {
 
 <form action="../update/<?php echo $form_values['doc_id']?>" method="post" id="creation_form" name="indoc_creation_form" enctype="multipart/form-data" class="pure-form pure-form-aligned">
   <fieldset>
-    <legend>Chi tiết Công văn</legend>
+    <legend>Chi tiết công văn</legend>
 
       <div class="pure-g-r">
         <div class="pure-control-group pure-u-1-2">
@@ -21,7 +21,8 @@ jQuery(function () {
           <select id="doc_cat" name="doc_cat">
             <option value="CVDEN"> Công văn đến </option>
             <option value="CVDI"> Công văn đi </option>
-            <option value="VBPL">Văn bản Pháp luật</option>
+            <option value="VBPL">Văn bản pháp luật</option>
+            <option value="VBNB">Văn bản Nội bộ</option>
             <option value="BMAU">Biểu mẫu</option>
           </select>
         </div>
@@ -57,7 +58,7 @@ jQuery(function () {
       </div>
 
       <div class="pure-control-group pure-u-1-2">
-        <label for="doc_pages">Số tờ</label>
+        <label for="doc_pages">Số trang</label>
         <input type="text" id="doc_pages" name="doc_pages" value="<?php echo $form_values['doc_pages'];?>" />
       </div>
       </div>

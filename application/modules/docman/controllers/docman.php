@@ -119,13 +119,24 @@ class DocMan extends MX_Controller
       }
       else // Both 'from date' and 'to date' have NOT been set.
       {
-        $this->form_validation->set_rules('doc_code', '"Số và Ký hiệu văn bản"', 'required' );
-
-        if ($this->form_validation->run())
-        {
-          $code = $this->input->post('doc_code');
-          $result = $this->document_model->get_document_by_doc_code($code);
-        }
+      	if($this->input->post('doc_code'))
+      	{
+        	$this->form_validation->set_rules('doc_code', '"Số và Ký hiệu văn bản"', 'required' );
+	      	if ($this->form_validation->run())
+	        {
+	          $code = $this->input->post('doc_code');
+	          $result = $this->document_model->get_document_by_doc_code($code);
+	        }
+      	}
+      	else 
+      	{
+      		$this->form_validation->set_rules('doc_title', '"Tiêu đề Văn bản"', 'required' );
+      		if ($this->form_validation->run())
+	        {
+	          $title = $this->input->post('doc_title');
+	          $result = $this->document_model->get_document_by_doc_title($title);
+	        }
+      	}        
       }
 
       if($result)

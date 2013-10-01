@@ -61,6 +61,8 @@ class Document_model extends CI_Model {
 
   function get_document_between_date($from, $to)
   {
+  	$data = null;
+  	
     $this->db->select('*');
     $this->db->from('docman');
 
@@ -68,7 +70,6 @@ class Document_model extends CI_Model {
     $this->db->where('arrived_date <=', $to);
     $result = $this->db->get();
 
-    $data;
     if($result->num_rows() > 0) {
       foreach($result->result_array() as $row) {
         $data[] = $row;
@@ -79,7 +80,7 @@ class Document_model extends CI_Model {
 
   function get_document_by_doc_code($code)
   {
-    $data;
+    $data = null;
 
     $this->db->select('*');
     $this->db->from('docman');
@@ -94,6 +95,22 @@ class Document_model extends CI_Model {
     return $data;
   }
 
+  function get_document_by_doc_title($title)
+  {
+    $data = null;
+
+    $this->db->select('*');
+    $this->db->from('docman');
+    $this->db->like('doc_title', $title);
+    $result = $this->db->get();
+
+    if($result->num_rows() > 0) {
+      foreach($result->result_array() as $row) {
+        $data[] = $row;
+      }
+    }
+    return $data;
+  }
 
   function update($doc_id, $document)
   {

@@ -1,4 +1,7 @@
-#Tue Oct 01 09:28:25 ICT 2013
+#Tue Oct 01 14:21:33 ICT 2013
 eclipse.preferences.version=1
+encoding//application/modules/docman/controllers/docman.php=UTF-8
 encoding//application/modules/docman/views/creation_form.php=UTF-8
+encoding//application/modules/docman/views/edit_form.php=UTF-8
+encoding//application/modules/docman/views/search_document_form.php=UTF-8
 encoding//application/widgets/views/site_navigation_widget.php=UTF-8
