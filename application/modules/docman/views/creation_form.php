@@ -19,6 +19,7 @@ jQuery(function () {
             <option value="CVDEN"> Công văn đến </option>
             <option value="CVDI"> Công văn đi </option>
             <option value="VBPL">Văn bản Pháp luật</option>
+            <option value="VBNB">Văn bản Nội bộ</option>
             <option value="BMAU">Biểu mẫu</option>
           </select>
         </div>
