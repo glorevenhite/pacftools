@@ -3,8 +3,8 @@
     <thead>
       <tr>
         <th>Mã</th>
-        <th width="350px">T�n</th>
-        <th>Ngày</th>
+        <th width="350px">Tên</th>
+        <th>Ngày đến</th>
         <th>Thao tác</th>
       </tr>
     </thead>
