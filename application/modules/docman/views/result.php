@@ -3,7 +3,7 @@
     <thead>
       <tr>
         <th>Mã</th>
-        <th>Tên</th>
+        <th width="350px">T�n</th>
         <th>Ngày</th>
         <th>Thao tác</th>
       </tr>
@@ -20,11 +20,11 @@
        </td>
         <td><?php echo($value['doc_date']);?></td>
         <td>
-          <a href="<?php echo $value['attachment'];?>" class="pure-button">Dowload</a>
+          <a href="<?php echo $value['attachment'];?>" class="pure-button"><i class="icon-download-alt"></i></a>
           <?php if(modules::run('login/is_logged_in_as_admin')):?>
-          <a href="edit/<?php echo $value['doc_id'];?>" class="pure-button">Chỉnh sửa</a>
-          <a href="deliver/<?php echo $value['doc_id'];?>" class="pure-button">Chuyển</a>
-          <a href="assignees/<?php echo $value['doc_id'];?>" class="pure-button">Chi tiết nhận</a>
+          <a href="edit/<?php echo $value['doc_id'];?>" class="pure-button"><i class="icon-edit"></i></a>
+          <a href="assignees/<?php echo $value['doc_id'];?>" class="pure-button"><i class="icon-info-sign"></i></a>
+           <a href="deliver/<?php echo $value['doc_id'];?>" class="pure-button">Chuyển</a>
           <?php endif;?>
         </td>
 
